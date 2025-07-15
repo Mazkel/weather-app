@@ -35,5 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error(error);
             });
         }
+             switcher.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
 
 });
