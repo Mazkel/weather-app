@@ -14,5 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-
+      function fetchWeather(city) {
+        fetch(`http://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.success === false || !data.location) {
+                    weatherDiv.innerHTML = `<p>Error: ${data.error?.info || "Unable to fetch weather."}</p>`;
+                    return;
+                }            
 });
