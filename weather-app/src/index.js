@@ -35,8 +35,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error(error);
             });
         }
+
+        function renderAllWeather() {
+            fetch('http://localhost:3000/weather')
+            .then(res => res.json())
+            .then(data => {
+                let elements = '';
+                data.forEach(weather => {
+                   elements +=
+                    `<h2>${weather.city}, ${weather.country}</h2>
+                     <p>Temperature: ${weather.temperature}°C</p>
+                     <p>Wind Speed: ${weather.wind_speed} km/h</p>
+                     <p>Condition: ${weather.weather_description}</p>
+                     <p>${weather.icon}<p/>
+                     `;
+                });
+                weatherDiv.innerHTML = elements;
+            });            
+        };
+       
              switcher.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
     });
-
+ renderAllWeather()
 });
+
