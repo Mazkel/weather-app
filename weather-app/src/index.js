@@ -9,9 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchBtn.addEventListener('click', () => {
         const city = input.value.trim();
-        if (city) {
+        if (!city) return;
+        
+        if (useLiveToggle.checked) {
             fetchWeather(city);
-        }
+        } else {
+            fetchMockWeather(city)
+        };
     });
 
       function fetchWeather(city) {
@@ -36,27 +40,29 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        function renderAllWeather() {
+        function fetchMockWeather(city) {
             fetch('http://localhost:3000/weather')
             .then(res => res.json())
             .then(data => {
-                let elements = '';
-                data.forEach(weather => {
-                   elements +=
-                    `<h2>${weather.city}, ${weather.country}</h2>
-                     <p>Temperature: ${weather.temperature}°C</p>
-                     <p>Wind Speed: ${weather.wind_speed} km/h</p>
-                     <p>Condition: ${weather.weather_description}</p>
-                     <p>${weather.icon}<p/>
-                     `;
-                });
-                weatherDiv.innerHTML = elements;
-            });            
+                const match = data.find(w => w.city.toLowerCase() === city.toLowerCase());
+                if(!match) {
+                    weatherDiv.innerHTML = `<p>No weather data found for ${city}</p>`
+                    return;
+                }
+                              
+                weatherDiv.innerHTML = `
+                     <h2>${match.city}, ${match.country}</h2>
+                     <p>Temperature: ${match.temperature}°C</p>
+                     <p>Wind Speed: ${match.wind_speed} km/h</p>
+                     <p>Condition: ${match.weather_description}</p>
+                     <p>${match.icon}<p/>
+                     `;                
+                 });            
         };
-       
              switcher.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
     });
- renderAllWeather()
+
+    fetchMockWeather()
 });
 
