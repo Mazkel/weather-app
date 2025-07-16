@@ -62,7 +62,5 @@ document.addEventListener("DOMContentLoaded", () => {
              switcher.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
     });
-
-    fetchMockWeather()
 });
 
