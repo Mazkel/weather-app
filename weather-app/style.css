@@ -1,10 +1,13 @@
 body {
+    font-family: Arial, Helvetica, sans-serif;
     background-color: blanchedalmond;
-}
-
-h1 {
+    transition: background-color 0.3s ease, color 0.3s ease;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 80px;
+
 }
 
 .controls {
@@ -12,4 +15,48 @@ h1 {
     justify-content:center;
     gap: 10px;
 }
+
+.dark-mode {
+    background-color:dimgrey;
+    color: aliceblue;
+}
+
+.dark-mode input,
+.dark-mode button,
+.dark-mode label {
+    background-color:rgb(169, 169, 169);
+    color: white;
+    border-radius: 10px solid #888;
+}
+
+.dark-mode #weather-result {
+    margin-top: 20px;
+    background-color: #333;
+    color: aliceblue;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1); 
+}
+
+button, input[type="text"] {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+
+button {
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: darkcyan;
+}
+
+
+
+
+
+
 
