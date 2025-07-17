@@ -44,11 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         mockWeather.addEventListener('click', () => {
-            fetch('http://localhost:3000/weather')
+            fetch('http://localhost:3000/weather/')
             .then(res => res.json())
             .then(data => {
                 let html = '';
-                data.forEach( weather => {
+                data.forEach(weather => {
                     html += `
                         <h2>${weather.city}, ${weather.country}</h2>
                         <p>Temperature: ${weather.temperature}°C</p>

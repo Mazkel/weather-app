@@ -1,5 +1,6 @@
-{
-    "weather": [
+ {
+  "weather":
+ [
     {
       "city": "Brisbane",
       "country": "Australia",
@@ -41,4 +42,5 @@
       "icon": "🌙"
     }
   ]
-}
+ }
+ 
