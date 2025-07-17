@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const useLiveToggle = document.querySelector('#live-toggle');
     const mockWeather = document.querySelector('#mock-weather')
 
-    const apiKey = 'a2ad7a5fb4efcbb8bd83381b0f2806a3';
+   
 
     searchBtn.addEventListener('click', () => {
         const city = input.value.trim();
